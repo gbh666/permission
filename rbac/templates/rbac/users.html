@@ -1,0 +1,42 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+</head>
+<body>
+<h1>用户列表</h1>
+<a href="/rbac/user/add.html">添加</a>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>昵称</th>
+        <th>用户名</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for user in user_list %}
+
+        <tr>
+            <td>{{ user.pk }}</td>
+            <td>{{ user.nickname }}</td>
+            <td>{{ user.username }}</td>
+            <td>
+                <a href="/rbac/user/edit/{{ user.pk }}.html">编辑</a>
+                <a href="/rbac/user/del/{{ user.pk }}.html">删除</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+
+
+</table>
+
+</body>
+</html>
